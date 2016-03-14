@@ -6,26 +6,27 @@ public class IODemo {
 	
 	public static void main(String[] args) {
 
-		System.out.println("Voer een getal in");
-		Scanner s = new Scanner(System.in);
 		
-		String input = s.next();
-		String tekst = " (";
+		int teller = 1;
+		int primes = 0;
 		
-		int sum = 0;
+		boolean isPrime = true;
 		
-		for (int i = 0; i < input.length(); i++)
+		while (primes < 10)
 		{
-			int x = Character.getNumericValue(input.charAt(i));
-			sum += x;
-			if (i < input.length() - 1)
-				tekst = tekst + Character.toString(input.charAt(i)) + " + ";
-			else
-				tekst = tekst + Character.toString(input.charAt(i));
+			for (int i = 2; i < 1000; i++)
+				if (teller % i != 0)
+					if (teller == i)
+						isPrime = false;
+				
+			if (isPrime = true)
+			{
+				System.out.println(teller);
+				primes++;
+			}
+			teller++;
+			
 		}
 		
-		tekst = tekst + ")";
-		
-		System.out.println(sum + tekst);
 	}
 }
