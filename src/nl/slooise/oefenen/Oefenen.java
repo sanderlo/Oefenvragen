@@ -3,6 +3,8 @@ package nl.slooise.oefenen;
 public class Oefenen {
 
 	public static void main (String [] args){
+		String as = "hoi";
+		System.out.println(aantalbytes(as));
 		byte a = 2;
 		System.out.println(pastIn(a, true));
 	}
@@ -37,6 +39,10 @@ public class Oefenen {
 	
 	public static int aantalbytes(short argument) {
 		return 2;
+	}
+	
+	public static int aantalbytes(Object argument){
+		throw new IllegalArgumentException("not a primitive");
 	}
 	
 	public static boolean pastIn(int a, float b){
