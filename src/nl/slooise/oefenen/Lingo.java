@@ -40,11 +40,12 @@ public class Lingo {
 		feedback = "";
 		for (int i = 0; i < 5; i++){
 			if (geheim.charAt(i) == input.charAt(i)){
-				feedback += "x";
+				feedback += input.charAt(i);
 				letters[i] = true;
 			}
-			else if (isEr(i)){
+			else if(geheim.indexOf(input.charAt(i)) != i && geheim.indexOf(input.charAt(i)) > -1){
 				feedback += "o";
+				guessed = false;
 			}
 			else {
 				feedback += ".";
@@ -52,18 +53,5 @@ public class Lingo {
 			}
 		}
 		System.out.println(feedback);
-	}
-	
-	public static boolean isEr (int pos){
-		boolean bool = false;
-		for (int i = 0; i < 5; i++){
-			if (i != pos){
-				if (!letters[i]){
-					if (input.charAt(i) == geheim.charAt(pos))
-							bool = true;
-				}
-			}
-		}
-		return bool;
 	}
 }
