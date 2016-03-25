@@ -33,7 +33,7 @@ public abstract class Square {
 		squareItems.add(i);
 	}
 	
-	InventoryItem take(String name) {
+	public InventoryItem take(String name) {
 		InventoryItem t = null;
 		for (Item i: squareItems){
 			if (i instanceof InventoryItem){
@@ -42,5 +42,9 @@ public abstract class Square {
 			}
 		}
 		return t;
+	}
+	
+	public void drop (InventoryItem item){
+		squareItems.add(item);
 	}
 }

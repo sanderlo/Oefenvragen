@@ -6,30 +6,30 @@ public class Adventure {
 
 	private static GameWorld gw;
 	private static Player player;
-	private static Scanner s;
+	private static Scanner input;
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		gw = new GameWorld();
 		player = new Player(1,1);
-		s = new Scanner(System.in);
+		input = new Scanner(System.in);
 
 		gameLoop();
 	}
 	
 	public static void gameLoop(){
 		showSquare(); 
-		getInput();
+		System.out.println("Wat wil je doen? Je kunt in de volgende richtingen lopen " + opties());
+		System.out.println("Je kunt ook iets pakken of droppen");
+		action(getInput());
 	}
 	
 	public static void showSquare(){
 		System.out.println(gw.getSquare(player.getX(), player.getY()).getDescription());
 	}
 	
-	public static void getInput(){
-		System.out.println("Wat wil je doen? Je kunt in de richtingen " + opties());
-		String input = s.next();
-		walk(input);
+	public static String getInput(){
+		return input.next();
 	}
 	
 	public static String opties(){
@@ -41,33 +41,24 @@ public class Adventure {
 		return o;
 	}
 
-	public static void walk(String input){
+	public static void action(String input){
 		
 		switch (input) {
-		case "noorden":
-		case "noord":
-		case "N":
-		case "n":	walkN();
-					break;
-		case "zuiden":
-		case "zuid":
-		case "Z":
-		case "z":	walkS();
-					break;
-		case "westen":
-		case "west":
-		case "W":
-		case "w":	walkW();
-					break;
-		case "oosten":
-		case "oost":
-		case "O":
-		case "o":	walkE();
-					break;
+		case "noorden": case "noord": 	case "N": 	case "n":	walkN();break;
+		case "zuiden":	case "zuid":	case "Z":	case "z":	walkS();break;
+		case "westen":	case "west":	case "W":	case "w":	walkW();break;
+		case "oosten":	case "oost":	case "O":	case "o":	walkE();break;
+		case "pak":	pak(); break;
 		default:	System.out.println("Geen goede invoer");
-					getInput();
+					gameLoop();
 					break;
 		}
+	}
+	
+	public static void pak (){
+		String s = input.next();
+		System.out.println();
+		player.taken(gw.getSquare(player.getX(), player.getY()).take(s));
 	}
 	
 	public static void walkN(){

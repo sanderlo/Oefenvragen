@@ -2,7 +2,7 @@ package nl.slooise.adventure;
 
 import java.util.ArrayList;
 
-import nl.slooise.adventureItems.Item;
+import nl.slooise.adventureItems.*;
 
 public class Player {
 	private int posX, posY;
@@ -38,4 +38,15 @@ public class Player {
 		return playerItems.get(i);
 	}
 	
+	public void dropped (String naam){
+		for (Item i : playerItems){
+			if (((InventoryItem) i).getName() == naam){
+				playerItems.remove(i);
+			}
+		}
+	}
+	
+	public void taken (InventoryItem item){
+		playerItems.add(item);
+	}
 }
